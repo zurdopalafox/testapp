@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Personaje</title>
+</head>
+<body>
+    <h1>Insertar Personaje</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>ID Personaje:</label>
+        <input type="number" name="cajaid" required><br>
+        <label>Nombre del Personaje:</label>
+        <input type="text" name="cajanombre" required><br>
+        <label>Imagen del Personaje:</label>
+        <input type="text" name="cajaimagen" required><br>
+        Seleccione Serie:
+        <select name="cajaidserie" class="form-control">
+            {%for serie in listaseries %}
+                <option value="{{serie.idSerie}}">
+                    {{serie.nombre}}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Insertar Personaje</button>
+    </form>
+</body>
+</html>
